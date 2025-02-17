@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "ResourceGroupDeleter": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7230",
+      "launchBrowser": false
+    }
+  }
+}
