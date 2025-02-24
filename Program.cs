@@ -8,7 +8,6 @@ using Microsoft.Azure.Functions.Worker;
 
 var builder = FunctionsApplication.CreateBuilder(args);
 
-builder.ConfigureFunctionsWebApplication();
 builder.Services.AddAzureClients(builder =>
 {
     builder.AddArmClient("1a2cbe6d-efc5-4d59-8a28-f1124700a13e")
