@@ -77,14 +77,8 @@ resource functionApp 'Microsoft.Web/sites@2024-04-01' = {
 module roleModule 'role.bicep' = {
   name: 'resourcegroupdeleter'
   scope: subscription()
-}
-
-resource roleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(resourceGroup().name, 'Resource Group Deleter')
-  properties: {
-    roleDefinitionId: roleModule.outputs.roleId
+  params: {
     principalId: functionApp.identity.principalId
-    principalType: 'ServicePrincipal'
   }
 }
 

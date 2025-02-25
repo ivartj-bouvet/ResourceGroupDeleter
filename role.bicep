@@ -1,5 +1,7 @@
 targetScope = 'subscription'
 
+param principalId string
+
 var roleName = 'Resource Group Deleter Role'
 
 resource role 'Microsoft.Authorization/roleDefinitions@2022-04-01' = {
@@ -19,6 +21,15 @@ resource role 'Microsoft.Authorization/roleDefinitions@2022-04-01' = {
         ]
       }
     ]
+  }
+}
+
+resource roleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(principalId, 'Resource Group Deleter')
+  properties: {
+    roleDefinitionId: role.id
+    principalId: principalId
+    principalType: 'ServicePrincipal'
   }
 }
 
